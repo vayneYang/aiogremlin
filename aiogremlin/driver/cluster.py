@@ -117,8 +117,8 @@ class Cluster:
                     'Unknown host: {}'.format(hostname))
         else:
             host = self._hosts.popleft()
-        conn = await host.get_connection()
         self._hosts.append(host)
+        conn = await host.get_connection()
         return conn
 
     async def establish_hosts(self):
